@@ -1,47 +1,38 @@
-const express = require("express");
-const router = express.Router();
-const model = require("../models/model"); // Importe o modelo de jogos
+const model = require("../models/model");
 
-let lastJogoId = 0; // Variável para controlar o último ID utilizado para jogos
-
-router.get("/", (req, res) => {
-  const jogos = model.listarJogos(); // Use a função listarJogos do modelo
+// Função para listar jogos
+exports.listarJogos = (req, res) => {
+  const jogos = model.listarJogos();
   res.json(jogos);
-});
+};
 
-router.post("/", (req, res) => {
+// Função para adicionar um novo jogo
+exports.adicionarJogo = (req, res) => {
   const { nome, plataformas, genero, anoLancamento, preco, imagem } = req.body;
-
-  // Incrementar o ID antes de criar um novo jogo
-  lastJogoId++;
-  const novoJogo = new model.Jogo(lastJogoId, nome, plataformas, genero, anoLancamento, preco, imagem);
+  const novoJogo = new model.Jogo(null, nome, plataformas, genero, anoLancamento, preco, imagem);
   model.adicionarJogo(novoJogo);
   res.status(201).json(novoJogo);
-});
+};
 
-
-router.put("/:id", (req, res) => {
+// Função para atualizar um jogo
+exports.atualizarJogo = (req, res) => {
   const id = req.params.id;
   const { nome, plataformas, genero, anoLancamento, preco, imagem } = req.body;
-
   const jogoAtualizado = model.atualizarJogo(id, nome, plataformas, genero, anoLancamento, preco, imagem);
   if (jogoAtualizado) {
-      res.json(jogoAtualizado);
+    res.json(jogoAtualizado);
   } else {
-      res.status(404).json({ error: 'Jogo não encontrado' });
+    res.status(404).json({ error: 'Jogo não encontrado' });
   }
-});
+};
 
-
-router.delete("/:id", (req, res) => {
+// Função para excluir um jogo
+exports.excluirJogo = (req, res) => {
   const id = req.params.id;
-
-  const jogoExcluido = model.excluirJogo(id); // Use a função excluirJogo do modelo
+  const jogoExcluido = model.excluirJogo(id);
   if (jogoExcluido) {
     res.json(jogoExcluido);
   } else {
     res.status(404).json({ error: 'Jogo não encontrado' });
   }
-});
-
-module.exports = router;
+};
