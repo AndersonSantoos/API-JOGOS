@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 // Configurar o middleware CORS
 app.use(cors());
 
-app.use('/', routes);
+app.use('/jogos', routes);
 
 // Configurar a documentação Swagger
 setupSwagger(app);
