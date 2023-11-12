@@ -25,7 +25,7 @@ const controller = require("./controller/controller"); // Importe o controlador
  */
 
 // Rota para listar jogos
-router.get("/jogos", controller.listarJogos);
+router.get("/", controller.listarJogos);
 
 /**
  * @swagger
@@ -54,7 +54,7 @@ router.get("/jogos", controller.listarJogos);
  */
 
 // Rota para adicionar um novo jogo
-router.post("/jogos", controller.adicionarJogo);
+router.post("/", controller.adicionarJogo);
 
 /**
  * @swagger
@@ -87,7 +87,7 @@ router.post("/jogos", controller.adicionarJogo);
  */
 
 // Rota para atualizar um jogo
-router.put("/jogos/:id", controller.atualizarJogo);
+router.put("/:id", controller.atualizarJogo);
 
 /**
  * @swagger
@@ -115,6 +115,6 @@ router.put("/jogos/:id", controller.atualizarJogo);
  */
 
 // Rota para excluir um jogo
-router.delete("/jogos/:id", controller.excluirJogo);
+router.delete("/:id", controller.excluirJogo);
 
 module.exports = router;
