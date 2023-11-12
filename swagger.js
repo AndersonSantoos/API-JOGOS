@@ -9,6 +9,17 @@ const options = {
       version: '1.0.0',
       description: 'Documentação da API de Jogos',
     },
+    servers: [
+      {
+        url: 'https://api-jogos.onrender.com/', // URL de solitação para testar documentação.
+        description: 'Servidor da aplicação',
+      },
+      
+      // {
+      //   url: 'https://api-jogos.onrender.com',
+      //   description: 'Ambiente de produção',
+      // },
+    ],
   },
   apis: ['./routes.js'],
 };
