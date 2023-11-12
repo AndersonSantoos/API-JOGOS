@@ -18,6 +18,7 @@ app.use('/', routes);
 // Configurar a documentação Swagger
 setupSwagger(app);
 
+
 app.listen(port, () => {
   console.log(`Rodando na porta ${port}`);
 });

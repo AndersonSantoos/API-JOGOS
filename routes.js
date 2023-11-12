@@ -25,7 +25,7 @@ const controller = require("./controller/controller"); // Importe o controlador
  */
 
 // Rota para listar jogos
-router.get("/jogos", controller.listarJogos);
+router.get("/", controller.listarJogos);
 
 /**
  * @swagger
@@ -54,7 +54,7 @@ router.get("/jogos", controller.listarJogos);
  */
 
 // Rota para adicionar um novo jogo
-router.post("/jogos", controller.adicionarJogo);
+router.post("/", controller.adicionarJogo);
 
 /**
  * @swagger
