@@ -21,7 +21,9 @@ const controller = require("./controller/controller"); // Importe o controlador
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Jogo'
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Jogo'
  */
 
 // Rota para listar jogos
@@ -34,6 +36,7 @@ router.get("/", controller.listarJogos);
  *     summary: Adiciona um novo jogo.
  *     tags: [Jogos]
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
@@ -45,10 +48,6 @@ router.get("/", controller.listarJogos);
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Jogo'
- *         links:
- *           Jogo:
- *             operationId: "listarJogos"
- *             description: Ver todos os jogos
  *       400:
  *         description: Dados inválidos. As informações do jogo são inválidas.
  */
@@ -71,6 +70,7 @@ router.post("/", controller.adicionarJogo);
  *           format: int64
  *         description: ID do jogo a ser atualizado
  *     requestBody:
+ *       required: true
  *       content:
  *         application/json:
  *           schema:
