@@ -8,8 +8,8 @@ exports.listarJogos = (req, res) => {
 
 // Função para adicionar um novo jogo
 exports.adicionarJogo = (req, res) => {
-  const { nome, plataformas, genero, anoLancamento, preco, imagem } = req.body;
-  const novoJogo = new model.Jogo(null, nome, plataformas, genero, anoLancamento, preco, imagem);
+  const {id, nome, plataformas, genero, anoLancamento, preco, imagem } = req.body;
+  const novoJogo = new model.Jogo(id, nome, plataformas, genero, anoLancamento, preco, imagem);
   model.adicionarJogo(novoJogo);
   res.status(201).json(novoJogo);
 };

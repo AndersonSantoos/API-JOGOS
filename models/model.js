@@ -11,8 +11,6 @@ class Jogo {
   }
 }
 
-// Resto do código permanece inalterado
-
   
   const jogos = [
     {
